@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishal Shrivastav | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">Vishal<span>Shrivastav</span></a>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Dark/Light Mode Toggle -->
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span id="typing"></span></h1>
+      <p>Full Stack Web Developer | MERN | Problem Solver</p>
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="resume.pdf" download class="btn">Download CV</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://i.pinimg.com/736x/09/24/a7/0924a7ef295741e916c8f42512bbe5bd.jpg" alt="Vishal Shrivastav">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-img">
+      <img src="https://png.pngtree.com/png-vector/20240716/ourmid/pngtree-illustration-of-boy-using-computer-png-image_13123358.png" alt="About Vishal Shrivastav">
+    </div>
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm <b>Vishal Shrivastav</b>, a passionate Full Stack Developer specializing in the MERN stack. 
+        I love building scalable web apps, solving coding problems, and learning new technologies.
+      </p>
+      <p>
+        With a strong foundation in computer science and hands-on experience in modern web technologies,
+        I create efficient and user-friendly applications that solve real-world problems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">React.js</div>
+      <div class="skill-card">Node.js</div>
+      <div class="skill-card">MongoDB</div>
+      <div class="skill-card">Express.js</div>
+      <div class="skill-card">Git & GitHub</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>My Projects</h2>
+
+    <!-- Project Filter -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="app">App</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card" data-category="web">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLlIkEXC6t3j8bYdflNxbEqlhMc15BCFwgvQ&s" alt="E-Commerce Project">
+        <h3>E-Commerce Website</h3>
+        <p>A full-featured online store with user authentication, product catalog, and payment integration.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+      <div class="project-card" data-category="app">
+        <img src=https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Uber Clone">
+        <h3>Uber Clone</h3>
+        <p>A ride-sharing application with real-time tracking, fare calculation, and driver-passenger matching.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+      <div class="project-card" data-category="other">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Task Manager">
+        <h3>Task Management App</h3>
+        <p>A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Vishal Shrivastav. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
