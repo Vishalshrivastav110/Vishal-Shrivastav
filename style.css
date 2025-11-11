@@ -14,6 +14,7 @@ body {
   background-color: #0f172a;
   color: #e2e8f0;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Header Styles */
@@ -41,6 +42,7 @@ header.scrolled {
   font-weight: 700;
   text-decoration: none;
   color: #e2e8f0;
+  z-index: 1001;
 }
 
 .logo span {
@@ -81,6 +83,38 @@ nav ul li a::after {
 
 nav ul li a:hover::after {
   width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -380,7 +414,72 @@ footer {
   color: #94a3b8;
 }
 
+/* Scroll Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #3b82f6;
+  width: 0%;
+  z-index: 2000;
+}
+
+/* Dark/Light Mode */
+:root {
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --card-bg: #1e293b;
+}
+
+.light-mode {
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --card-bg: #e2e8f0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.skill-card, .project-card, #contactForm input, #contactForm textarea {
+  background-color: var(--card-bg);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  margin-left: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #3b82f6;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  margin: 0 10px;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #2563eb;
+}
+
 /* Responsive Design */
+/* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
   #hero, #about {
     flex-direction: column;
@@ -402,20 +501,42 @@ footer {
   .hero-content h1 {
     font-size: 2.8rem;
   }
+  
+  .about-text h2, #skills h2, #projects h2, #contact h2 {
+    font-size: 2.2rem;
+  }
 }
 
+/* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 1rem 5%;
+  .menu-toggle {
+    display: flex;
   }
   
   nav ul {
-    margin-top: 1rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: #0f172a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.5s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav ul.active {
+    right: 0;
   }
   
   nav ul li {
-    margin: 0 0.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  header {
+    padding: 1rem 5%;
   }
   
   .hero-content h1 {
@@ -425,63 +546,108 @@ footer {
   .hero-content p {
     font-size: 1.2rem;
   }
-  /* Scroll Progress Bar */
-#progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 5px;
-  background: #3b82f6;
-  width: 0%;
-  z-index: 2000;
+  
+  .about-text h2, #skills h2, #projects h2, #contact h2 {
+    font-size: 2rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #theme-toggle {
+    margin-left: 10px;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
 }
 
-/* Dark/Light Mode */
-:root {
-  --bg-color: #0f172a;
-  --text-color: #e2e8f0;
-  --card-bg: #1e293b;
-}
-.light-mode {
-  --bg-color: #f8fafc;
-  --text-color: #0f172a;
-  --card-bg: #e2e8f0;
-}
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-.skill-card, .project-card, #contactForm input, #contactForm textarea {
-  background-color: var(--card-bg);
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  header {
+    padding: 0.8rem 5%;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  #hero {
+    margin-top: 70px;
+    padding: 0 3%;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  #about, #skills, #projects, #contact {
+    padding: 3rem 3%;
+  }
+  
+  .about-text h2, #skills h2, #projects h2, #contact h2 {
+    font-size: 1.8rem;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skill-card {
+    padding: 1rem;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  #contactForm {
+    gap: 1rem;
+  }
+  
+  #contactForm input, #contactForm textarea {
+    padding: 0.8rem;
+  }
 }
 
-/* Theme Toggle Button */
-#theme-toggle {
-  margin-left: 20px;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background: #3b82f6;
-  color: white;
-  font-size: 1.2rem;
-}
-
-/* Filter Buttons */
-.filter-buttons {
-  margin-bottom: 2rem;
-}
-.filter-btn {
-  margin: 0 10px;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  background: #3b82f6;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.filter-btn.active, .filter-btn:hover {
-  background: #2563eb;
-}
-
+/* Extra small devices (phones, 360px and up) */
+@media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card h3 {
+    font-size: 1.3rem;
+  }
 }
